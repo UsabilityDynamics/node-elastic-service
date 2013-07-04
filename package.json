@@ -1,0 +1,26 @@
+{
+  "name": "elastic-client",
+  "description": "ElasticSearch client.",
+  "author": {
+    "name": "Usability Dynamics",
+    "email": "info@usabilitydynamics.com",
+    "url": "http://usabilitydynamics.com"
+  },
+  "contributors": [
+    {
+      "name": "Andy Potanin",
+      "email": "andy.potanin@usabilitydynamics.com",
+      "url": "http://usabilitydynamics.com"
+    },
+    {
+      "name": "Ivan McCarthy",
+      "email": "ivan.mccarthy@usabilitydynamics.com",
+      "url": "http://usabilitydynamics.com"
+    }
+  ],
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "elastical": "*"
+  }
+}
