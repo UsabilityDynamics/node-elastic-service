@@ -1,6 +1,6 @@
 {
   "name": "elastic-client",
-  "description": "ElasticSearch client.",
+  "description": "ElasticSearch client. The module can be used to start ElasticSearch instances, configure instance settings, and interact with the instance after it is initialized.",
   "author": {
     "name": "Usability Dynamics",
     "email": "info@usabilitydynamics.com",
@@ -25,6 +25,10 @@
     "url": "https://github.com/usabilitydynamics/ElasticClient"
   },
   "dependencies": {
-    "elastical": "*"
+    "async": "*",
+    "which": "*",
+    "elastical": "*",
+    "lodash": "*",
+    "eventemitter2": "*"
   }
 }
