@@ -1,0 +1,17 @@
+{
+  "name": "Elastic Client",
+  "description": "ElasticSearch client instantiation from Node.js.",
+  "version": "0.0.1",
+  "url": "https://github.com/usabilitydynamics/elastic-client",
+  "logo": "https://usabilitydynamics.com/production/wp-content/uploads/2012/03/usability-dynamics-logo2.png",
+  "options": {
+    "norecurse": false,
+    "no-code": false,
+    "extension": ".js",
+    "tabtospace": 2,
+    "outdir": "./docs",
+    "paths": [
+      "./lib"
+    ]
+  }
+}

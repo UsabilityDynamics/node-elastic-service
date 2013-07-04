@@ -1,7 +1,12 @@
 {
   "name": "elastic-client",
+  "version": "0.0.1",
   "description": "ElasticSearch client. The module can be used to start ElasticSearch instances, configure instance settings, and interact with the instance after it is initialized.",
   "main": "lib/elastic-client",
+  "keywords"   : ["elasticsearch", "elastic", "search", "client", "lucene"],
+  "copyright"  : "Copyright (c) 2013 Usability Dynamics, Inc.",
+  "engines": [ "node >=0.4.0", "npm >=1.0.0" ],
+  "scripts": {},
   "author": {
     "name": "Usability Dynamics",
     "email": "info@usabilitydynamics.com",
@@ -19,17 +24,16 @@
       "url": "http://usabilitydynamics.com"
     }
   ],
-  "version": "0.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/usabilitydynamics/ElasticClient"
   },
   "dependencies": {
-    "async": "*",
-    "which": "*",
-    "elastical": "*",
-    "lodash": "*",
-    "eventemitter2": "*"
+    "async": "0.2.9",
+    "which": "1.0.5",
+    "elastical": "0.0.11",
+    "lodash": "1.3.1",
+    "eventemitter2": "0.4.12"
   },
   "devDependencies": {
     "mocha": "*",
