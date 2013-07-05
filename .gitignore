@@ -10,7 +10,6 @@ npm-debug.log
 *.sublime-project
 *.sublime-workspace
 
-lib-cov
 *.seed
 *.log
 *.csv
@@ -18,8 +17,3 @@ lib-cov
 *.out
 *.pid
 *.gz
-
-pids
-logs
-results
-

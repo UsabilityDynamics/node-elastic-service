@@ -2,7 +2,7 @@
   "name": "elastic-client",
   "version": "0.0.1",
   "description": "ElasticSearch client. The module can be used to start ElasticSearch instances, configure instance settings, and interact with the instance after it is initialized.",
-  "main": "lib/elastic-client",
+  "main": "index",
   "keywords"   : ["elasticsearch", "elastic", "search", "client", "lucene"],
   "copyright"  : "Copyright (c) 2013 Usability Dynamics, Inc.",
   "engines": [ "node >=0.4.0", "npm >=1.0.0" ],

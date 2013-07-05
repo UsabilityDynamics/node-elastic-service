@@ -1,0 +1,738 @@
+{
+    "project": {
+        "name": "Elastic Client",
+        "description": "ElasticSearch client instantiation from Node.js.",
+        "version": "0.0.1",
+        "url": "https://github.com/usabilitydynamics/elastic-client",
+        "logo": "http://a3d72a45d111006ec192-ec5b80a12b0b09b4d52373336afb4254.r80.cf1.rackcdn.com/usability-dynamics.png"
+    },
+    "files": {
+        "lib/document.js": {
+            "name": "lib/document.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/elastic-client.js": {
+            "name": "lib/elastic-client.js",
+            "modules": {
+                "ElasticClient": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/index.js": {
+            "name": "lib/index.js",
+            "modules": {
+                "Index": 1
+            },
+            "classes": {},
+            "fors": {
+                "Index": 1
+            },
+            "namespaces": {}
+        },
+        "lib/type.js": {
+            "name": "lib/type.js",
+            "modules": {
+                "Type": 1
+            },
+            "classes": {},
+            "fors": {
+                "Type": 1
+            },
+            "namespaces": {}
+        },
+        "lib/utility.js": {
+            "name": "lib/utility.js",
+            "modules": {
+                "elastic-client": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "ElasticClient": {
+            "name": "ElasticClient",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib/elastic-client.js",
+            "line": 1,
+            "description": "Elastic Client",
+            "is_constructor": 1,
+            "async": 1,
+            "chainable": 1,
+            "author": "potanin@UD",
+            "date": "7/4/13",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Client settings.",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "node.name",
+                            "description": "Name of instance.",
+                            "type": "String"
+                        },
+                        {
+                            "name": "cluster.name",
+                            "description": "Name of cluster for instance.",
+                            "type": "String"
+                        },
+                        {
+                            "name": "network.publish_host",
+                            "description": "Hostname of instance.",
+                            "type": "String"
+                        },
+                        {
+                            "name": "http.port",
+                            "description": "Port of instance.",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "index.number_of_shards",
+                            "description": "Number of shards.",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "index.number_of_replicas",
+                            "description": "Number of replicas.",
+                            "type": "Number"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "New ElasticClient instance.",
+                "type": "Object"
+            }
+        },
+        "Index": {
+            "name": "Index",
+            "submodules": {},
+            "classes": {
+                "Index": 1
+            },
+            "fors": {
+                "Index": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib/index.js",
+            "line": 1,
+            "description": "Index Module\n\n-",
+            "is_constructor": 1,
+            "author": "potanin@UD",
+            "date": "7/4/13",
+            "type": "{Object}"
+        },
+        "Type": {
+            "name": "Type",
+            "submodules": {},
+            "classes": {
+                "Type": 1
+            },
+            "fors": {
+                "Type": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib/type.js",
+            "line": 1,
+            "description": "Type Module\n\n-",
+            "is_constructor": 1,
+            "author": "potanin@UD",
+            "date": "7/4/13",
+            "type": "{Object}"
+        },
+        "elastic-client": {
+            "name": "elastic-client",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib/utility.js",
+            "line": 1,
+            "description": "Elastic Client Utility",
+            "sub": "-module Utility",
+            "author": "potanin@UD",
+            "date": "7/4/13"
+        }
+    },
+    "classes": {
+        "Index": {
+            "name": "Index",
+            "shortname": "Index",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Index",
+            "namespace": ""
+        },
+        "Type": {
+            "name": "Type",
+            "shortname": "Type",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Type",
+            "namespace": ""
+        }
+    },
+    "classitems": [
+        {
+            "file": "lib/document.js",
+            "line": 1,
+            "description": "Document Module\n\n-",
+            "params": [
+                {
+                    "name": "index",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "type",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "data",
+                    "description": "When a document is being updated or created the data object should be set.",
+                    "type": "Object"
+                }
+            ],
+            "author": "potanin@UD",
+            "date": "7/4/13",
+            "type": "{Object}",
+            "class": "Index"
+        },
+        {
+            "file": "lib/document.js",
+            "line": 49,
+            "description": "Prototypal Properties",
+            "class": "Index"
+        },
+        {
+            "file": "lib/document.js",
+            "line": 55,
+            "description": "Force Immediate Save",
+            "class": "Index"
+        },
+        {
+            "file": "lib/document.js",
+            "line": 66,
+            "description": "Remove",
+            "class": "Index"
+        },
+        {
+            "file": "lib/document.js",
+            "line": 76,
+            "description": "Set Content",
+            "class": "Index"
+        },
+        {
+            "file": "lib/document.js",
+            "line": 90,
+            "description": "Constructor Properties",
+            "class": "Index"
+        },
+        {
+            "file": "lib/document.js",
+            "line": 96,
+            "description": "Create Instance",
+            "itemtype": "method",
+            "name": "create",
+            "return": {
+                "description": "",
+                "type": "Function"
+            },
+            "class": "Index"
+        },
+        {
+            "file": "lib/elastic-client.js",
+            "line": 58,
+            "description": "Get / Update or create a Document",
+            "async": 1,
+            "chainable": 1,
+            "class": "Index",
+            "module": "ElasticClient"
+        },
+        {
+            "file": "lib/elastic-client.js",
+            "line": 70,
+            "description": "Get / Update or create an Index",
+            "async": 1,
+            "chainable": 1,
+            "class": "Index",
+            "module": "ElasticClient"
+        },
+        {
+            "file": "lib/elastic-client.js",
+            "line": 82,
+            "description": "Type Actions",
+            "async": 1,
+            "chainable": 1,
+            "class": "Index",
+            "module": "ElasticClient"
+        },
+        {
+            "file": "lib/elastic-client.js",
+            "line": 94,
+            "description": "Search Documents",
+            "class": "Index",
+            "module": "ElasticClient"
+        },
+        {
+            "file": "lib/elastic-client.js",
+            "line": 106,
+            "description": "Bulk Actions",
+            "class": "Index",
+            "module": "ElasticClient"
+        },
+        {
+            "file": "lib/elastic-client.js",
+            "line": 118,
+            "description": "Get Setting",
+            "return": {
+                "description": "Setting value;"
+            },
+            "async": 1,
+            "class": "Index",
+            "module": "ElasticClient"
+        },
+        {
+            "file": "lib/elastic-client.js",
+            "line": 157,
+            "description": "Set an Option / Options",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "Instance.",
+                "type": "Object"
+            },
+            "chainable": 1,
+            "class": "Index",
+            "module": "ElasticClient"
+        },
+        {
+            "file": "lib/elastic-client.js",
+            "line": 189,
+            "description": "Shutdown Instance",
+            "chainable": 1,
+            "async": 1,
+            "class": "Index",
+            "module": "ElasticClient"
+        },
+        {
+            "file": "lib/elastic-client.js",
+            "line": 312,
+            "description": "Prototyal Properties",
+            "class": "Index",
+            "module": "ElasticClient"
+        },
+        {
+            "file": "lib/elastic-client.js",
+            "line": 318,
+            "description": "Get / Update or create a Document",
+            "async": 1,
+            "chainable": 1,
+            "class": "Index",
+            "module": "ElasticClient"
+        },
+        {
+            "file": "lib/elastic-client.js",
+            "line": 330,
+            "description": "Get / Update or create an Index",
+            "async": 1,
+            "chainable": 1,
+            "class": "Index",
+            "module": "ElasticClient"
+        },
+        {
+            "file": "lib/elastic-client.js",
+            "line": 342,
+            "description": "Type Actions",
+            "async": 1,
+            "chainable": 1,
+            "class": "Index",
+            "module": "ElasticClient"
+        },
+        {
+            "file": "lib/elastic-client.js",
+            "line": 354,
+            "description": "Search Documents",
+            "class": "Index",
+            "module": "ElasticClient"
+        },
+        {
+            "file": "lib/elastic-client.js",
+            "line": 366,
+            "description": "Bulk Actions",
+            "class": "Index",
+            "module": "ElasticClient"
+        },
+        {
+            "file": "lib/elastic-client.js",
+            "line": 378,
+            "description": "Get Setting",
+            "return": {
+                "description": "Setting value;"
+            },
+            "async": 1,
+            "class": "Index",
+            "module": "ElasticClient"
+        },
+        {
+            "file": "lib/elastic-client.js",
+            "line": 417,
+            "description": "Set an Option / Options",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "Instance.",
+                "type": "Object"
+            },
+            "chainable": 1,
+            "class": "Index",
+            "module": "ElasticClient"
+        },
+        {
+            "file": "lib/elastic-client.js",
+            "line": 449,
+            "description": "Shutdown Instance",
+            "chainable": 1,
+            "async": 1,
+            "class": "Index",
+            "module": "ElasticClient"
+        },
+        {
+            "file": "lib/elastic-client.js",
+            "line": 476,
+            "description": "Constructor Properties",
+            "class": "Index",
+            "module": "ElasticClient"
+        },
+        {
+            "file": "lib/elastic-client.js",
+            "line": 494,
+            "description": "Get / Set Defaults",
+            "params": [
+                {
+                    "name": "data",
+                    "description": ""
+                }
+            ],
+            "class": "Index",
+            "module": "ElasticClient"
+        },
+        {
+            "file": "lib/elastic-client.js",
+            "line": 512,
+            "description": "Start ElasticSearch Instance",
+            "extends": "ElasticClient",
+            "class": "Index",
+            "module": "ElasticClient"
+        },
+        {
+            "file": "lib/elastic-client.js",
+            "line": 530,
+            "description": "Define Logger",
+            "class": "Index",
+            "module": "ElasticClient"
+        },
+        {
+            "file": "lib/index.js",
+            "line": 25,
+            "description": "Prototypal Properties",
+            "class": "Index",
+            "module": "Index"
+        },
+        {
+            "file": "lib/index.js",
+            "line": 37,
+            "description": "Constructor Properties",
+            "class": "Index",
+            "module": "Index"
+        },
+        {
+            "file": "lib/index.js",
+            "line": 43,
+            "description": "Create Instance",
+            "itemtype": "method",
+            "name": "create",
+            "class": "Index",
+            "module": "Index"
+        },
+        {
+            "file": "lib/type.js",
+            "line": 32,
+            "description": "Prototypal Properties",
+            "class": "Type",
+            "module": "Type"
+        },
+        {
+            "file": "lib/type.js",
+            "line": 63,
+            "description": "Constructor Properties",
+            "class": "Type",
+            "module": "Type"
+        },
+        {
+            "file": "lib/type.js",
+            "line": 69,
+            "description": "Create Instance",
+            "itemtype": "method",
+            "name": "create",
+            "class": "Type",
+            "module": "Type"
+        },
+        {
+            "file": "lib/utility.js",
+            "line": 24,
+            "description": "Convert a JSON Schema to ES Mapping",
+            "params": [
+                {
+                    "name": "schema",
+                    "description": "Valid JSON Schema",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "ElasticSearch compliant mapping.",
+                "type": "Object"
+            },
+            "class": "",
+            "module": "elastic-client"
+        },
+        {
+            "file": "lib/utility.js",
+            "line": 38,
+            "description": "Convert ES Mapping to a JSON Schema",
+            "params": [
+                {
+                    "name": "schema",
+                    "description": "Valid JSON Schema",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "ElasticSearch compliant mapping.",
+                "type": "Object"
+            },
+            "class": "",
+            "module": "elastic-client"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "unknown tag: date",
+            "line": " lib/document.js:1"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/document.js:96"
+        },
+        {
+            "message": "unknown tag: date",
+            "line": " lib/elastic-client.js:1"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/elastic-client.js:1"
+        },
+        {
+            "message": "unknown tag: date",
+            "line": " lib/index.js:1"
+        },
+        {
+            "message": "unknown tag: date",
+            "line": " lib/type.js:1"
+        },
+        {
+            "message": "unknown tag: sub",
+            "line": " lib/utility.js:1"
+        },
+        {
+            "message": "unknown tag: date",
+            "line": " lib/utility.js:1"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/utility.js:24"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/utility.js:38"
+        },
+        {
+            "message": "Missing item type\nDocument Module\n\n-",
+            "line": " lib/document.js:1"
+        },
+        {
+            "message": "Missing item type\nPrototypal Properties",
+            "line": " lib/document.js:49"
+        },
+        {
+            "message": "Missing item type\nForce Immediate Save",
+            "line": " lib/document.js:55"
+        },
+        {
+            "message": "Missing item type\nRemove",
+            "line": " lib/document.js:66"
+        },
+        {
+            "message": "Missing item type\nSet Content",
+            "line": " lib/document.js:76"
+        },
+        {
+            "message": "Missing item type\nConstructor Properties",
+            "line": " lib/document.js:90"
+        },
+        {
+            "message": "Missing item type\nGet / Update or create a Document",
+            "line": " lib/elastic-client.js:58"
+        },
+        {
+            "message": "Missing item type\nGet / Update or create an Index",
+            "line": " lib/elastic-client.js:70"
+        },
+        {
+            "message": "Missing item type\nType Actions",
+            "line": " lib/elastic-client.js:82"
+        },
+        {
+            "message": "Missing item type\nSearch Documents",
+            "line": " lib/elastic-client.js:94"
+        },
+        {
+            "message": "Missing item type\nBulk Actions",
+            "line": " lib/elastic-client.js:106"
+        },
+        {
+            "message": "Missing item type\nGet Setting",
+            "line": " lib/elastic-client.js:118"
+        },
+        {
+            "message": "Missing item type\nSet an Option / Options",
+            "line": " lib/elastic-client.js:157"
+        },
+        {
+            "message": "Missing item type\nShutdown Instance",
+            "line": " lib/elastic-client.js:189"
+        },
+        {
+            "message": "Missing item type\nPrototyal Properties",
+            "line": " lib/elastic-client.js:312"
+        },
+        {
+            "message": "Missing item type\nGet / Update or create a Document",
+            "line": " lib/elastic-client.js:318"
+        },
+        {
+            "message": "Missing item type\nGet / Update or create an Index",
+            "line": " lib/elastic-client.js:330"
+        },
+        {
+            "message": "Missing item type\nType Actions",
+            "line": " lib/elastic-client.js:342"
+        },
+        {
+            "message": "Missing item type\nSearch Documents",
+            "line": " lib/elastic-client.js:354"
+        },
+        {
+            "message": "Missing item type\nBulk Actions",
+            "line": " lib/elastic-client.js:366"
+        },
+        {
+            "message": "Missing item type\nGet Setting",
+            "line": " lib/elastic-client.js:378"
+        },
+        {
+            "message": "Missing item type\nSet an Option / Options",
+            "line": " lib/elastic-client.js:417"
+        },
+        {
+            "message": "Missing item type\nShutdown Instance",
+            "line": " lib/elastic-client.js:449"
+        },
+        {
+            "message": "Missing item type\nConstructor Properties",
+            "line": " lib/elastic-client.js:476"
+        },
+        {
+            "message": "Missing item type\nGet / Set Defaults",
+            "line": " lib/elastic-client.js:494"
+        },
+        {
+            "message": "Missing item type\nStart ElasticSearch Instance",
+            "line": " lib/elastic-client.js:512"
+        },
+        {
+            "message": "Missing item type\nDefine Logger",
+            "line": " lib/elastic-client.js:530"
+        },
+        {
+            "message": "Missing item type\nPrototypal Properties",
+            "line": " lib/index.js:25"
+        },
+        {
+            "message": "Missing item type\nConstructor Properties",
+            "line": " lib/index.js:37"
+        },
+        {
+            "message": "Missing item type\nPrototypal Properties",
+            "line": " lib/type.js:32"
+        },
+        {
+            "message": "Missing item type\nConstructor Properties",
+            "line": " lib/type.js:63"
+        },
+        {
+            "message": "Missing item type\nConvert a JSON Schema to ES Mapping",
+            "line": " lib/utility.js:24"
+        },
+        {
+            "message": "Missing item type\nConvert ES Mapping to a JSON Schema",
+            "line": " lib/utility.js:38"
+        }
+    ]
+}

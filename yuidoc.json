@@ -9,7 +9,7 @@
     "no-code": false,
     "extension": ".js",
     "tabtospace": 2,
-    "outdir": "./docs",
+    "outdir": "./static",
     "paths": [
       "./lib"
     ]
