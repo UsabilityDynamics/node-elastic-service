@@ -22,8 +22,7 @@ module.exports = {
       var EC = require( '../' );
       EC.should.have.property( 'utility' );
       EC.should.have.property( 'logger' );
-      EC.should.have.property( 'start' );
-      EC.should.have.property( 'defaults' );
+      EC.should.have.property( 'create' );
     }
 
   }
