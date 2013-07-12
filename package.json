@@ -30,8 +30,6 @@
   },
   "dependencies": {
     "abstract": "*",
-    "object-settings": "*",
-    "observe.io": "*",
     "which": "*",
     "elastical": "*",
     "lodash": "*",
