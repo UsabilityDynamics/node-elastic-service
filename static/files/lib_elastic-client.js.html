@@ -41,9 +41,9 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="../classes/Index.html">Index</a></li>
+                <li><a href="../classes/elastic-client.html">elastic-client</a></li>
             
-                <li><a href="../classes/Type.html">Type</a></li>
+                <li><a href="../classes/Index.html">Index</a></li>
             
             </ul>
 
@@ -51,11 +51,7 @@
             
                 <li><a href="../modules/elastic-client.html">elastic-client</a></li>
             
-                <li><a href="../modules/ElasticClient.html">ElasticClient</a></li>
-            
                 <li><a href="../modules/Index.html">Index</a></li>
-            
-                <li><a href="../modules/Type.html">Type</a></li>
             
             </ul>
         </div>
@@ -97,559 +93,173 @@
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
- * Elastic Client
+ * ElasticClient
  *
- * @module ElasticClient
- * @constructor
- * @async
- * @chainable
  *
- * @author potanin@UD
- * @date 7/4/13
  *
- * @param options {Object} Client settings.
- * @param options.node.name {String} Name of instance.
- * @param options.cluster.name {String} Name of cluster for instance.
- * @param options.network.publish_host {String} Hostname of instance.
- * @param options.http.port {Number} Port of instance.
- * @param options.index.number_of_shards {Number} Number of shards.
- * @param options.index.number_of_replicas {Number} Number of replicas.
+ * @todo Replace eventemitter2 with object-channel once namespacing is ready.
  *
- * @returns {Object} New ElasticClient instance.
  */
-function ElasticClient( options ) {
-  // ElasticClient.logger.debug( &#x27;Starting.&#x27; );
+require( &#x27;abstract&#x27; ).createModel( function ElasticClient( ElasticClient, prototype ) {
 
-  // Modules
-  var _ = require( &#x27;lodash&#x27; );
+  // Expose Model
+  module.exports = ElasticClient;
+
+  // Use async, Object Channel (EventEmitter) and select Abstract utility methods
+  ElasticClient.use( require( &#x27;async&#x27; ) );
+  ElasticClient.use( require( &#x27;abstract&#x27; ).utility( &#x27;defaults&#x27; ) );
+
+  // Local Modules
   var fs = require( &#x27;fs&#x27; );
-  var Observe = require( &#x27;observe.io&#x27; );
 
-  // Create Instance Properties for Main Module
-  var Instance = Object.create( ElasticClient.prototype, {
-    pid: {
-      value: undefined,
-      enumerable: false,
-      writable: true
-    },
-    settings: {
-      value: ElasticClient.utility.defaults( options || {}, ElasticClient._defaults || {} ),
-      enumerable: false,
-      writable: true
-    },
-    client: {
-      value: new ( require( &#x27;elastical&#x27; ) ).Client( this.get( &#x27;host&#x27; ), {
-        port: this.get( &#x27;port&#x27; ),
-        protocol: this.get( &#x27;protocol&#x27; ),
-        timeout: 60000,
-        auth: false
-      }),
-      enumerable: false,
-      writable: true
-    },
-    args: {
-      value: [ &#x27;-f&#x27; ],
-      enumerable: false,
-      writable: true
-    },
-    Document: {
-      /**
-       * Get / Update or create a Document
-       *
-       * @async
-       * @chainable
-       */
-      value: require( &#x27;./document&#x27; ),
-      configurable: false,
-      enumerable: true,
-      writable: false
-    },
-    Index: {
-      /**
-       * Get / Update or create an Index
-       *
-       * @async
-       * @chainable
-       */
-      value: require( &#x27;./index&#x27; ),
-      configurable: false,
-      enumerable: true,
-      writable: false
-    },
-    Type: {
-      /**
-       * Type Actions
-       *
-       * @async
-       * @chainable
-       */
-      value: require( &#x27;./type&#x27; ),
-      configurable: false,
-      enumerable: true,
-      writable: false
-    },
-    search: {
-      /**
-       * Search Documents
-       *
-       */
-      value: function search() {
-        this.client.search.apply( this, arguments );
-        return this;
-      },
-      enumerable: true,
-      writable: true
-    },
-    bulk: {
-      /**
-       * Bulk Actions
-       *
-       */
-      value: function bulk() {
-        this.client.bulk.apply( this.client, arguments );
-        return this;
-      },
-      enumerable: true,
-      writable: true
-    },
-    get: {
-      /**
-       * Get Setting
-       *
-       * @return {} Setting value;
-       * @async
-       */
-      value: function get( key ) {
-
-        // Delo hostame. Just because.
-        key = key || &#x27;hostame&#x27;;
-
-        var options = this.settings || {};
-
-        // Helper for Hostname lookup
-        if( key === &#x27;host&#x27; ) {
-
-          if( options[ &#x27;network.publish_host&#x27; ] ) {
-            key = &#x27;network.publish_host&#x27;;
-          }
-
-        }
-
-        // Helper for port lookup
-        if( key === &#x27;port&#x27; ) {
-
-          if( options[ &#x27;http.port&#x27; ] ) {
-            key = &#x27;http.port&#x27;;
-          }
-
-        }
-
-        return options[ key ] || null;
-
-      },
-      configurable: false,
-      writable: false,
-      enumerable: true
-    },
-    set: {
-      /**
-       * Set an Option / Options
-       *
-       * @param key {String}
-       * @param value {Any}
-       * @return {Object} Instance.
-       * @chainable
-       */
-      value: function set( key, value ) {
-
-        // Create Container
-        this.settings = ElasticClient.utility.defaults( this.settings, ElasticClient._defaults );
-
-        // Set Key-Value
-        if( &#x27;string&#x27; === typeof key ) {
-          this.settings[ key ] = value ? value : this.settings[ key ] || undefined;
-        }
-
-        // Extend Options using Object
-        if( &#x27;object&#x27; === typeof key ) {
-          ElasticClient.utility.extend( this.settings, key );
-        }
-
-        // Instance
-        return this;
-
-      },
-      configurable: false,
-      writable: false,
-      enumerable: true
-    },
-    stop: {
-      /**
-       * Shutdown Instance
-       *
-       * @chainable
-       * @async
-       */
-      value: function stop() {
-
-        // Kill the process
-        process.kill( this.pid );
-
-        // Remove from Instance Pool
-        delete ElasticClient._data.instances[ this.pid ];
-
-        // Emit Event
-        this.emit( &#x27;node.stopped&#x27; );
-
-        // Return Instance
-        return this;
-
-      },
-      configurable: false,
-      writable: false,
-      enumerable: true
-    }
+  // Properties: Constructor
+  ElasticClient.defineProperties( ElasticClient, {
+    utility: require( &#x27;./utility&#x27; ),
+    debug: require( &#x27;debug&#x27; )( &#x27;elastic-client&#x27; ),
+    stop: { get: function() { return ElasticClient.prototype.stop } }
   });
 
-  // Add Emitter functionality to Instance
-  var Emitter = Observe.Emitter.create( arguments.callee.name, {
-    delimiter: &#x27;.&#x27;,
-    maxListeners: 100
-  });
+  // Properties: Instance
+  ElasticClient.defineProperties( prototype, {
+    startup: function startup( error, report ) {
+      var self = this;
 
-  Observe.utility.inherit( Instance, Observe.Emitter.prototype );
-
-  console.log( Emitter.emit );
-
-  // Monitor successful start
-  Instance.once( &#x27;node.started&#x27;, function( error, report ) {
-    ElasticClient.logger.debug( &#x27;Node started with pid [%s]&#x27;, this.pid );
-    ElasticClient._data.instances[ this.pid ] = this;
-  })
-
-  // Start Instance
-  ElasticClient.async.auto({
-    // Validate and Prepare Options
-    options: [ function options( next, report ) {
-
-      try {
-
-        if( Instance.settings[ &#x27;path.data&#x27; ] ) {
-          Instance.settings[ &#x27;path.data&#x27; ] = fs.realpathSync( Instance.settings[ &#x27;path.data&#x27; ] );
-        }
-
-        if( Instance.settings[ &#x27;path.work&#x27; ] ) {
-          Instance.settings[ &#x27;path.work&#x27; ] = fs.realpathSync( Instance.settings[ &#x27;path.work&#x27; ] );
-        }
-
-        if( Instance.settings[ &#x27;path.logs&#x27; ] ) {
-          Instance.settings[ &#x27;path.logs&#x27; ] = fs.realpathSync( Instance.settings[ &#x27;path.logs&#x27; ] );
-        }
-
-      } catch( error ) { return next( error ); }
-
-      next( null, Instance.settings );
-
-    }],
-    // Find Executable Path
-    path: [ &#x27;options&#x27;, function path( next, report ) {
-
-      // If path to ES is specified, resolve and return
-      if( report.options.path &amp;&amp; fs.existsSync( report.options.path ) ) {
-        return next( null, fs.realpathSync( report.options.path ) )
-      };
-
-      // Try to find global instance
-      require( &#x27;which&#x27; )( &#x27;elasticsearch&#x27;, function which( error, found_path ) {
-        next( error, found_path );
+      ElasticClient.nextTick( function() {
+        self.emit( &#x27;node.started&#x27;, error, report );
+        if( error ) { self.emit( &#x27;error&#x27;, error ); }
       });
 
-      // Failure
-      next( new Error( &#x27;ElasticSearch path not specified.&#x27; ) );
+      return this;
 
-    }],
-    // Spawn Process, &quot;pipe&quot; Events
-    process: [ &#x27;path&#x27;, function process( next, report ) {
-
-      // Command Arguments.
-      Object.keys( report.options ).forEach( function( key ) {
-        Instance.args.push( [ &#x27;-Des.&#x27;, key, &#x27;=&#x27;, report.options[ key ] ].join( &#x27;&#x27; ) );
-      });
-
-      // Spawn process and bind listeners
-      report.process = require( &#x27;child_process&#x27; ).spawn( report.path, Instance.args, {
-        detached: false
-      });
-
-      // Input Data
-      Instance.on( &#x27;stdin.data&#x27;, function( data ) { report.process.stdin.write( data ); });
-
-      // Output Data and Error
-      report.process.stdout.on( &#x27;data&#x27;, function( data ) { Instance.emit( &#x27;process.data&#x27;, data.toString() ); });
-      report.process.stdout.on( &#x27;error&#x27;, function( data ) { Instance.emit( &#x27;process.error&#x27;, data.toString() ); });
-
-      // Set PID
-      Instance.pid = report.process.pid;
-
-      // Done
-      next( !report.process.pid ? new Error( &#x27;Could now spawn process, no PID returned.&#x27; ) : null, report.process || null );
-
-    }]
-  }, function Report( error, report ) {
-    process.nextTick( function() {
-      Instance.emit( &#x27;node.started&#x27;, error, report );
-      if( error ) { Instance.emit( &#x27;error&#x27;, error ); }
-    });
-  });
-
-  // Return Instance
-  return Instance;
-
-}
-
-/**
- * Prototyal Properties
- *
- */
-Object.defineProperties( ElasticClient.prototype, {
-  Document: {
-    /**
-     * Get / Update or create a Document
-     *
-     * @async
-     * @chainable
-     */
-    value: require( &#x27;./document&#x27; ),
-    configurable: false,
-    enumerable: true,
-    writable: false
-  },
-  Index: {
-    /**
-     * Get / Update or create an Index
-     *
-     * @async
-     * @chainable
-     */
-    value: require( &#x27;./index&#x27; ),
-    configurable: false,
-    enumerable: true,
-    writable: false
-  },
-  Type: {
-    /**
-     * Type Actions
-     *
-     * @async
-     * @chainable
-     */
-    value: require( &#x27;./type&#x27; ),
-    configurable: false,
-    enumerable: true,
-    writable: false
-  },
-  search: {
-    /**
-     * Search Documents
-     *
-     */
-    value: function search() {
+    },
+    search: function search() {
       this.client.search.apply( this, arguments );
       return this;
     },
-    enumerable: true,
-    writable: true
-  },
-  bulk: {
-    /**
-     * Bulk Actions
-     *
-     */
-    value: function bulk() {
+    bulk: function bulk() {
       this.client.bulk.apply( this.client, arguments );
       return this;
     },
-    enumerable: true,
-    writable: true
-  },
-  get: {
-    /**
-     * Get Setting
-     *
-     * @return {} Setting value;
-     * @async
-     */
-    value: function get( key ) {
+    stop: function stop( pid ) {
 
-      // Delo hostame. Just because.
-      key = key || &#x27;hostame&#x27;;
+      var pid = pid || ( this.get ? this.get( &#x27;pid&#x27; ) : undefined );
 
-      var options = this.settings || {};
-
-      // Helper for Hostname lookup
-      if( key === &#x27;host&#x27; ) {
-
-        if( options[ &#x27;network.publish_host&#x27; ] ) {
-          key = &#x27;network.publish_host&#x27;;
-        }
-
+      // Emit Kill Event
+      if( !pid ) {
+        return this.emit ? this.emit( &#x27;node.stopped&#x27;, new Error( &#x27;ElasticSearch process with pid [&#x27;, pid ,&#x27;] not found.&#x27; ) ) : this;
       }
-
-      // Helper for port lookup
-      if( key === &#x27;port&#x27; ) {
-
-        if( options[ &#x27;http.port&#x27; ] ) {
-          key = &#x27;http.port&#x27;;
-        }
-
-      }
-
-      return options[ key ] || null;
-
-    },
-    configurable: false,
-    writable: false,
-    enumerable: true
-  },
-  set: {
-    /**
-     * Set an Option / Options
-     *
-     * @param key {String}
-     * @param value {Any}
-     * @return {Object} Instance.
-     * @chainable
-     */
-    value: function set( key, value ) {
-
-      // Create Container
-      this.settings = ElasticClient.utility.defaults( this.settings, ElasticClient._defaults );
-
-      // Set Key-Value
-      if( &#x27;string&#x27; === typeof key ) {
-        this.settings[ key ] = value ? value : this.settings[ key ] || undefined;
-      }
-
-      // Extend Options using Object
-      if( &#x27;object&#x27; === typeof key ) {
-        ElasticClient.utility.extend( this.settings, key );
-      }
-
-      // Instance
-      return this;
-
-    },
-    configurable: false,
-    writable: false,
-    enumerable: true
-  },
-  stop: {
-    /**
-     * Shutdown Instance
-     *
-     * @chainable
-     * @async
-     */
-    value: function stop() {
 
       // Kill the process
-      process.kill( this.pid );
+      process.kill( pid );
 
-      // Remove from Instance Pool
-      delete ElasticClient._data.instances[ this.pid ];
-
-      // Emit Event
-      this.emit( &#x27;node.stopped&#x27; );
-
-      // Return Instance
+      // Return self
       return this;
 
-    },
-    configurable: false,
-    writable: false,
-    enumerable: true
-  }
-})
+    }
+  });
 
-/**
- * Constructor Properties
- *
- */
-Object.defineProperties( module.exports = ElasticClient, {
-  _data: {
-    value: {
-      defaults: {
-        &#x27;http.port&#x27;: 9600,
-        &#x27;network.publish_host&#x27;: &#x27;127.0.0.1&#x27;,
-        &#x27;protocol&#x27;: &#x27;http&#x27;
+  // Constructor
+  ElasticClient.defineInstance( function Consruct( options ) {
+    var self = this;
+
+    // Instance Resources
+    self.use( require( &#x27;eventemitter2&#x27; ).EventEmitter2.prototype );
+    self.use( require( &#x27;elastical&#x27; ) );
+
+    // Set Options with Defaults
+    self.set( &#x27;settings&#x27;, ElasticClient.defaults( options, {
+      path: {
+        bin: undefined,
+        data: undefined,
+        work: undefined,
+        logs: undefined,
       },
-      instances: {}
-    },
-    enumerable: false,
-    writable: true
-  },
-  defaults: {
-    /**
-     * Get / Set Defaults
-     *
-     * @param data
-     */
-    value: function defaults( data ) {
-
-      if( data ) {
-        ElasticClient._data.defaults = data;
+      cluster: {
+        name: undefined
+      },
+      http: {
+        port: 8000
       }
+    }));
 
-      return ElasticClient._data.defaults;
+    // Begin Startup
+    self.auto({
+      options: [ function options( next, report ) {
 
-    },
-    enumerable: true,
-    writable: false
-  },
-  start: {
-    /**
-     * Start ElasticSearch Instance
-     *
-     * @extends ElasticClient
-     */
-    get: function() { return function( options ) { return new ElasticClient( options ); }; },
-    configurable: true,
-    enumerable: true
-  },
-  install_plugin: {
-    value: function install_plugin() {},
-    enumerable: true
-  },
-  remove_plugin: {
-    value: function remove_plugin() {},
-    enumerable: true
-  },
-  logger: {
-    /**
-     * Define Logger
-     *
-     */
-    value: {
-      log: function log() {},
-      error: console.error,
-      info: function info() {},
-      debug: require( &#x27;debug&#x27; )( &#x27;elastic-client&#x27; )
-    },
-    configurable: true,
-    writable: true,
-    enumerable: true
-  },
-  utility: {
-    value: require( &#x27;./utility&#x27; ),
-    enumerable: true,
-    writable: false
-  },
-  async: {
-    value: require( &#x27;async&#x27; ),
-    configurable: false,
-    enumerable: false,
-    writable: true
-  }
+        // No Paths
+        if( &#x27;object&#x27; !== typeof self.get( &#x27;settings.path&#x27; ) ) {
+          return next( null, self.get( &#x27;settings&#x27; ) )
+        }
+
+        for( var path in self.get( &#x27;settings.path&#x27; ) ) {
+
+          // @todo There is a bug with resolving paths.
+          var resolved_path;
+          var set_path = self.get( &#x27;settings.path&#x27; )[ path ];
+
+          // Resolve path
+          try { resolved_path = fs.realpathSync( set_path ); } catch( error ) { ElasticClient.debug( error ); }
+
+          // Update path in settings
+          self.set( &#x27;settings.path.&#x27; + path, resolved_path || undefined );
+
+        }
+
+        next( null, self.get( &#x27;settings&#x27; ) || {} );
+
+      }],
+      binary: [ &#x27;options&#x27;, function binary( next, report ) {
+
+        // If path to ES is specified, resolve and return
+        if( report.options.path.bin &amp;&amp; fs.existsSync( report.options.path.bin ) ) {
+          return next( null, fs.realpathSync( report.options.path.bin ) )
+        };
+
+        // Try to find global self
+        require( &#x27;which&#x27; )( &#x27;elasticsearch&#x27;, function which( error, found_path ) {
+          next( error, found_path );
+        });
+
+      }],
+      process: [ &#x27;binary&#x27;, function process( next, report ) {
+
+        var args = [ &#x27;-f&#x27; ];
+
+        // Command Arguments.
+        Object.keys( report.options ).forEach( function( key ) {
+          args.push( [ &#x27;-Des.&#x27;, key, &#x27;=&#x27;, report.options[ key ] ].join( &#x27;&#x27; ) );
+        });
+
+        // Spawn process and bind listeners
+        report.process = require( &#x27;child_process&#x27; ).spawn( report.binary, args, {
+          detached: false
+        });
+
+        // Input Data
+        self.on( &#x27;stdin.data&#x27;, function( data ) {
+          report.process.stdin.write( data );
+        });
+
+        // Output Data and Error
+        report.process.stdout.on( &#x27;data&#x27;, function( data ) {
+          self.emit( &#x27;process.data&#x27;, data.toString() );
+        });
+
+        report.process.stdout.on( &#x27;error&#x27;, function( data ) {
+          self.emit( &#x27;process.error&#x27;, data.toString() );
+        });
+
+        // Set PID
+        self.set( &#x27;pid&#x27;, report.process.pid );
+
+        // Done
+        next( !self.get( &#x27;pid&#x27; ) ? new Error( &#x27;Could now spawn process, no PID returned.&#x27; ) : null, report.process || null );
+
+      }]
+    }, this.startup.bind( this ) );
+
+  });
+
 });
 
     </pre>

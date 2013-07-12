@@ -2,34 +2,22 @@ YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
         "Index",
-        "Type"
+        "elastic-client"
     ],
     "modules": [
-        "ElasticClient",
         "Index",
-        "Type",
         "elastic-client"
     ],
     "allModules": [
         {
             "displayName": "elastic-client",
             "name": "elastic-client",
-            "description": "Elastic Client Utility"
-        },
-        {
-            "displayName": "ElasticClient",
-            "name": "ElasticClient",
-            "description": "Elastic Client"
+            "description": "Elastic Client Utility Methods"
         },
         {
             "displayName": "Index",
             "name": "Index",
             "description": "Index Module\n\n-"
-        },
-        {
-            "displayName": "Type",
-            "name": "Type",
-            "description": "Type Module\n\n-"
         }
     ]
 } };

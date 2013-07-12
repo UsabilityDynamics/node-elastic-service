@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/index.js - Elastic Client</title>
+    <title>lib/Index.js - Elastic Client</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -41,9 +41,9 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="../classes/Index.html">Index</a></li>
+                <li><a href="../classes/elastic-client.html">elastic-client</a></li>
             
-                <li><a href="../classes/Type.html">Type</a></li>
+                <li><a href="../classes/Index.html">Index</a></li>
             
             </ul>
 
@@ -51,11 +51,7 @@
             
                 <li><a href="../modules/elastic-client.html">elastic-client</a></li>
             
-                <li><a href="../modules/ElasticClient.html">ElasticClient</a></li>
-            
                 <li><a href="../modules/Index.html">Index</a></li>
-            
-                <li><a href="../modules/Type.html">Type</a></li>
             
             </ul>
         </div>
@@ -92,7 +88,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: lib/index.js</h1>
+                        <h1 class="file-heading">File: lib/Index.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -116,7 +112,7 @@ function Index( options ) {
       writable: true
     }
   });
-  
+
   return this;
 };
 
@@ -128,7 +124,7 @@ Object.defineProperties( Index.prototype, {
   prop: {
     value: {},
     enumerable: true,
-    writable: false    
+    writable: false
   }
 });
 
@@ -144,8 +140,8 @@ Object.defineProperties( module.exports = Index, {
      * @method create
      * @for Index
      */
-    get: function create() { 
-      return function( options ) { return new Index( options ); } 
+    get: function create() {
+      return function( options ) { return new Index( options ); }
      },
     enumerable: true
   }

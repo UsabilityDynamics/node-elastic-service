@@ -41,9 +41,9 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="../classes/Index.html">Index</a></li>
+                <li><a href="../classes/elastic-client.html">elastic-client</a></li>
             
-                <li><a href="../classes/Type.html">Type</a></li>
+                <li><a href="../classes/Index.html">Index</a></li>
             
             </ul>
 
@@ -51,11 +51,7 @@
             
                 <li><a href="../modules/elastic-client.html">elastic-client</a></li>
             
-                <li><a href="../modules/ElasticClient.html">ElasticClient</a></li>
-            
                 <li><a href="../modules/Index.html">Index</a></li>
-            
-                <li><a href="../modules/Type.html">Type</a></li>
             
             </ul>
         </div>
@@ -97,15 +93,27 @@
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
- * Elastic Client Utility
+ * Elastic Client Utility Methods
+ *
+ * @example
+ *
+ *    // Select specific methods to load
+ *    var my_tools = ElasticClient.utility( &#x27;if&#x27;, &#x27;extend&#x27;, &#x27;flatten&#x27;, &#x27;unwatch&#x27;, &#x27;watch&#x27; );
  *
  * @module elastic-client
  * @sub-module Utility
+ * @for elastic-client
+ *
+ * @params {Aarguments} List of utilities to export.
  *
  * @author potanin@UD
  * @date 7/4/13
  */
-var Utility = Object.defineProperties( module.exports, {
+function Utility() {
+  return Object.keys( arguments ) ? require( &#x27;lodash&#x27; ).pick.apply( null, [ Utility, Array.prototype.slice.call( arguments ) ] ) : Utility;
+}
+
+Object.defineProperties( module.exports = Utility, {
   defaults: {
     value: require( &#x27;lodash&#x27; ).defaults,
     configurable: true,
