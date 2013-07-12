@@ -23,7 +23,7 @@ One other fundamental difference between ESC and Elastical is I use Events like 
 To create a new ElasticSearch, instantiate the module using the start() method.
 
     // Instantiate.
-    var Instance = require( 'elastic-client' ).start({
+    var Instance = require( 'elastic-client' ).create({
       'path': '/usr/local/something/bin/elasticsearch',
       'node.name': 'Example-Node',
       'http.port': 9200,
