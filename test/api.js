@@ -15,7 +15,7 @@ module.exports = {
    */
   'before': function() {},
 
-  'Elastic Client': {
+/*  'Elastic Client': {
 
     // Very basic test
     'is available.': function() {
@@ -23,8 +23,14 @@ module.exports = {
       EC.should.have.property( 'utility' );
       EC.should.have.property( 'logger' );
       EC.should.have.property( 'create' );
-    }
+    },
+*/
+  'connects with elasticsearch': function() {
+    var Instance = require( '../' )({
+      'path': '~/Vendor/elasticsearch/bin/elasticsearch'
 
+    });
   }
 
 };
+
