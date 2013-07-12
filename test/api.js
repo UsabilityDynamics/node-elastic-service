@@ -57,20 +57,24 @@ module.exports = {
    },
 
     'connects with elasticsearch': function() {
-      var Instance = require( '../' ).create({
+      var Client = require( '../' );
+
+      var Instance = Client.create({
         cluster: {
           name: 'Example-Cluster'
         },
         path: {
           //bin: '/usr/local/Cellar/elasticsearch/bin/elasticsearch',
           data: './data_storage',
-          work: './work_directory',
           logs: './logs_directory'
         },
         http: {
           port: 9210
         }
       });
+
+      // Own Properties
+      Instance.should.have.property( 'stop' );
 
       // Inherited async methods
       Instance.should.have.property( 'nextTick' );
@@ -99,6 +103,9 @@ module.exports = {
       Instance.Index.should.have.property( 'prototype' );
       Instance.Index.should.have.property( 'getSettings' );
       Instance.Index.should.have.property( 'getMapping' );
+
+      // Stop service
+      Instance.stop();
 
     }
 

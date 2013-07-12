@@ -14,18 +14,16 @@ var Instance = require( 'elastic-client' ).create({
   },
   path: {
     bin: '/usr/local/Cellar/elasticsearch/bin/elasticsearch',
-    data: './data_storage',
-    work: './work_directory',
     logs: './logs_directory'
   }
 });
 
-Instance.onAny( function(data) {
-  console.log( this.event, data || '-' );
+// Console all events
+Instance.onAny( function( data ) {
+  // console.log( this.event, this );
 });
 
+// Instance started.
 Instance.once( 'node.started', function( error, report ) {
   console.log( 'Node started with pid [%s]', this.get( 'pid' ) );
-  //console.log( require( 'util' ).inspect( this, { showHidden: true, colors: true } ) )
-  //console.log( this );
 });
