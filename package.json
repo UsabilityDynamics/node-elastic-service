@@ -40,6 +40,7 @@
     "url": "https://github.com/UsabilityDynamics/elastic-client"
   },
   "dependencies": {
+    "colors": "*",
     "async": "0.2.9",
     "abstract": ">=0.0.3",
     "elastical": ">=0.0.10",

@@ -8,31 +8,27 @@
  */
 
 // Instantiate.
+require( 'colors' );
 
-
-var Instance = require( 'elastic-client' ).create({
-  path: {
-    bin: '../../Vendor/elasticsearch/bin/elasticsearch',
-    data: 'example/.dynamic/data',
-    work: 'example/.dynamic/work',
-    logs: 'example/.dynamic/logs'
-  },
+var Instance = require( 'elastic-client' ).create( '../../Vendor/elasticsearch/bin/elasticsearch', {
   cluster: {
-    name: 'Motherfuckin-Cluster'
+    name: 'Chesty-Puller'
   },
-  http: {
-    port: 9210
-  }
+  http: { port: 9220 }
 });
 
-// Console all events
+// Cconsole all events.
 Instance.onAny( function( data ) {
-   console.log( this.event, data );
+  if( data && data.category ) {
+    console.log( data.category.magenta, data.message.cyan );
+  } else {
+    // could not parse message - troubleshoot
+    console.log( "Could Not Parse", data );
+  }
 });
 
 // Instance started.
 Instance.once( 'node.started', function( error, report ) {
-
   console.log( 'Node started with pid [%s]', this.get( 'pid' ) );
 });
 

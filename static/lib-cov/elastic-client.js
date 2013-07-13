@@ -15,46 +15,49 @@ if (! _$jscoverage['elastic-client.js']) {
   _$jscoverage['elastic-client.js'][34] = 0;
   _$jscoverage['elastic-client.js'][35] = 0;
   _$jscoverage['elastic-client.js'][38] = 0;
+  _$jscoverage['elastic-client.js'][41] = 0;
   _$jscoverage['elastic-client.js'][42] = 0;
-  _$jscoverage['elastic-client.js'][43] = 0;
+  _$jscoverage['elastic-client.js'][45] = 0;
   _$jscoverage['elastic-client.js'][46] = 0;
-  _$jscoverage['elastic-client.js'][47] = 0;
-  _$jscoverage['elastic-client.js'][51] = 0;
-  _$jscoverage['elastic-client.js'][54] = 0;
+  _$jscoverage['elastic-client.js'][52] = 0;
   _$jscoverage['elastic-client.js'][55] = 0;
-  _$jscoverage['elastic-client.js'][59] = 0;
-  _$jscoverage['elastic-client.js'][62] = 0;
+  _$jscoverage['elastic-client.js'][56] = 0;
+  _$jscoverage['elastic-client.js'][60] = 0;
+  _$jscoverage['elastic-client.js'][63] = 0;
   _$jscoverage['elastic-client.js'][68] = 0;
   _$jscoverage['elastic-client.js'][69] = 0;
   _$jscoverage['elastic-client.js'][72] = 0;
   _$jscoverage['elastic-client.js'][73] = 0;
   _$jscoverage['elastic-client.js'][76] = 0;
+  _$jscoverage['elastic-client.js'][89] = 0;
   _$jscoverage['elastic-client.js'][92] = 0;
+  _$jscoverage['elastic-client.js'][95] = 0;
   _$jscoverage['elastic-client.js'][96] = 0;
-  _$jscoverage['elastic-client.js'][97] = 0;
-  _$jscoverage['elastic-client.js'][100] = 0;
+  _$jscoverage['elastic-client.js'][99] = 0;
+  _$jscoverage['elastic-client.js'][101] = 0;
   _$jscoverage['elastic-client.js'][103] = 0;
-  _$jscoverage['elastic-client.js'][104] = 0;
-  _$jscoverage['elastic-client.js'][107] = 0;
-  _$jscoverage['elastic-client.js'][110] = 0;
-  _$jscoverage['elastic-client.js'][114] = 0;
-  _$jscoverage['elastic-client.js'][120] = 0;
-  _$jscoverage['elastic-client.js'][121] = 0;
+  _$jscoverage['elastic-client.js'][106] = 0;
+  _$jscoverage['elastic-client.js'][108] = 0;
+  _$jscoverage['elastic-client.js'][113] = 0;
+  _$jscoverage['elastic-client.js'][118] = 0;
   _$jscoverage['elastic-client.js'][122] = 0;
-  _$jscoverage['elastic-client.js'][125] = 0;
-  _$jscoverage['elastic-client.js'][126] = 0;
-  _$jscoverage['elastic-client.js'][132] = 0;
-  _$jscoverage['elastic-client.js'][135] = 0;
-  _$jscoverage['elastic-client.js'][136] = 0;
+  _$jscoverage['elastic-client.js'][127] = 0;
+  _$jscoverage['elastic-client.js'][130] = 0;
+  _$jscoverage['elastic-client.js'][133] = 0;
+  _$jscoverage['elastic-client.js'][138] = 0;
   _$jscoverage['elastic-client.js'][140] = 0;
-  _$jscoverage['elastic-client.js'][145] = 0;
-  _$jscoverage['elastic-client.js'][146] = 0;
-  _$jscoverage['elastic-client.js'][150] = 0;
   _$jscoverage['elastic-client.js'][151] = 0;
-  _$jscoverage['elastic-client.js'][154] = 0;
-  _$jscoverage['elastic-client.js'][155] = 0;
-  _$jscoverage['elastic-client.js'][159] = 0;
-  _$jscoverage['elastic-client.js'][162] = 0;
+  _$jscoverage['elastic-client.js'][153] = 0;
+  _$jscoverage['elastic-client.js'][156] = 0;
+  _$jscoverage['elastic-client.js'][157] = 0;
+  _$jscoverage['elastic-client.js'][160] = 0;
+  _$jscoverage['elastic-client.js'][163] = 0;
+  _$jscoverage['elastic-client.js'][168] = 0;
+  _$jscoverage['elastic-client.js'][169] = 0;
+  _$jscoverage['elastic-client.js'][173] = 0;
+  _$jscoverage['elastic-client.js'][174] = 0;
+  _$jscoverage['elastic-client.js'][178] = 0;
+  _$jscoverage['elastic-client.js'][181] = 0;
 }
 _$jscoverage['elastic-client.js'][9]++;
 require("abstract").createModel((function ElasticClient(ElasticClient, prototype) {
@@ -63,7 +66,7 @@ require("abstract").createModel((function ElasticClient(ElasticClient, prototype
   _$jscoverage['elastic-client.js'][15]++;
   ElasticClient.use(require("async"));
   _$jscoverage['elastic-client.js'][16]++;
-  ElasticClient.use(require("abstract").utility("defaults"));
+  ElasticClient.use(require("abstract").utility("flatten_obj", "json", "defaults"));
   _$jscoverage['elastic-client.js'][19]++;
   var fs = require("fs");
   _$jscoverage['elastic-client.js'][22]++;
@@ -88,30 +91,30 @@ require("abstract").createModel((function ElasticClient(ElasticClient, prototype
   _$jscoverage['elastic-client.js'][38]++;
   return this;
 }), search: (function search() {
-  _$jscoverage['elastic-client.js'][42]++;
+  _$jscoverage['elastic-client.js'][41]++;
   this.client.search.apply(this, arguments);
-  _$jscoverage['elastic-client.js'][43]++;
+  _$jscoverage['elastic-client.js'][42]++;
   return this;
 }), bulk: (function bulk() {
-  _$jscoverage['elastic-client.js'][46]++;
+  _$jscoverage['elastic-client.js'][45]++;
   this.client.bulk.apply(this.client, arguments);
-  _$jscoverage['elastic-client.js'][47]++;
+  _$jscoverage['elastic-client.js'][46]++;
   return this;
 }), stop: (function stop(pid) {
-  _$jscoverage['elastic-client.js'][51]++;
+  _$jscoverage['elastic-client.js'][52]++;
   var pid = pid || (this.get? this.get("pid"): undefined);
-  _$jscoverage['elastic-client.js'][54]++;
+  _$jscoverage['elastic-client.js'][55]++;
   if (! pid) {
-    _$jscoverage['elastic-client.js'][55]++;
+    _$jscoverage['elastic-client.js'][56]++;
     return this.emit? this.emit("node.stopped", new Error("ElasticSearch process with pid [", pid, "] not found.")): this;
   }
-  _$jscoverage['elastic-client.js'][59]++;
+  _$jscoverage['elastic-client.js'][60]++;
   process.kill(pid);
-  _$jscoverage['elastic-client.js'][62]++;
+  _$jscoverage['elastic-client.js'][63]++;
   return this;
 })});
   _$jscoverage['elastic-client.js'][68]++;
-  ElasticClient.defineInstance((function Consruct(options) {
+  ElasticClient.defineInstance((function create(binary, options) {
   _$jscoverage['elastic-client.js'][69]++;
   var self = this;
   _$jscoverage['elastic-client.js'][72]++;
@@ -119,77 +122,80 @@ require("abstract").createModel((function ElasticClient(ElasticClient, prototype
   _$jscoverage['elastic-client.js'][73]++;
   self.use(require("elastical"));
   _$jscoverage['elastic-client.js'][76]++;
-  self.set("settings", ElasticClient.defaults(options, {path: {bin: undefined, data: undefined, work: undefined, logs: undefined}, cluster: {name: undefined}, http: {port: 8000}}));
+  self.set("settings", ElasticClient.defaults(options, {path: {data: undefined, work: undefined, logs: undefined}, cluster: {name: undefined}, http: {port: 8000}}));
+  _$jscoverage['elastic-client.js'][89]++;
+  self.set("binary", binary);
   _$jscoverage['elastic-client.js'][92]++;
   self.auto({options: [(function options(next, report) {
-  _$jscoverage['elastic-client.js'][96]++;
+  _$jscoverage['elastic-client.js'][95]++;
   if ("object" !== typeof self.get("settings.path")) {
-    _$jscoverage['elastic-client.js'][97]++;
+    _$jscoverage['elastic-client.js'][96]++;
     return next(null, self.get("settings"));
   }
-  _$jscoverage['elastic-client.js'][100]++;
+  _$jscoverage['elastic-client.js'][99]++;
   for (var path in self.get("settings.path")) {
-    _$jscoverage['elastic-client.js'][103]++;
+    _$jscoverage['elastic-client.js'][101]++;
     var resolved_path;
-    _$jscoverage['elastic-client.js'][104]++;
+    _$jscoverage['elastic-client.js'][103]++;
     var set_path = self.get("settings.path")[path];
-    _$jscoverage['elastic-client.js'][107]++;
+    _$jscoverage['elastic-client.js'][106]++;
     try {
-      _$jscoverage['elastic-client.js'][107]++;
+      _$jscoverage['elastic-client.js'][108]++;
       resolved_path = fs.realpathSync(set_path);
     }
     catch (error) {
-      _$jscoverage['elastic-client.js'][107]++;
+      _$jscoverage['elastic-client.js'][113]++;
       ElasticClient.debug(error);
     }
-    _$jscoverage['elastic-client.js'][110]++;
+    _$jscoverage['elastic-client.js'][118]++;
     self.set("settings.path." + path, resolved_path || undefined);
 }
-  _$jscoverage['elastic-client.js'][114]++;
+  _$jscoverage['elastic-client.js'][122]++;
   next(null, self.get("settings") || {});
 })], binary: ["options", (function binary(next, report) {
-  _$jscoverage['elastic-client.js'][120]++;
-  if (report.options.path.bin && fs.existsSync(report.options.path.bin)) {
-    _$jscoverage['elastic-client.js'][121]++;
-    return next(null, fs.realpathSync(report.options.path.bin));
+  _$jscoverage['elastic-client.js'][127]++;
+  try {
+    _$jscoverage['elastic-client.js'][130]++;
+    self.set("binary", fs.realpathSync(self.get("binary")));
+    _$jscoverage['elastic-client.js'][133]++;
+    return next(null, self.get("binary"));
   }
-  _$jscoverage['elastic-client.js'][122]++;
-  ;
-  _$jscoverage['elastic-client.js'][125]++;
-  require("which")("elasticsearch", (function which(error, found_path) {
-  _$jscoverage['elastic-client.js'][126]++;
+  catch (error) {
+    _$jscoverage['elastic-client.js'][138]++;
+    require("which")("elasticsearch", (function which(error, found_path) {
+  _$jscoverage['elastic-client.js'][140]++;
   next(error, found_path);
 }));
+  }
 })], process: ["binary", (function process(next, report) {
-  _$jscoverage['elastic-client.js'][132]++;
-  var args = ["-f"];
-  _$jscoverage['elastic-client.js'][135]++;
-  Object.keys(report.options).forEach((function (key) {
-  _$jscoverage['elastic-client.js'][136]++;
-  args.push(["-Des.", key, "=", report.options[key]].join(""));
-}));
-  _$jscoverage['elastic-client.js'][140]++;
-  report.process = require("child_process").spawn(report.binary, args, {detached: false});
-  _$jscoverage['elastic-client.js'][145]++;
-  self.on("stdin.data", (function (data) {
-  _$jscoverage['elastic-client.js'][146]++;
-  report.process.stdin.write(data);
-}));
-  _$jscoverage['elastic-client.js'][150]++;
-  report.process.stdout.on("data", (function (data) {
   _$jscoverage['elastic-client.js'][151]++;
-  self.emit("process.data", data.toString());
+  var arg_props = self.flatten_obj(report.options);
+  _$jscoverage['elastic-client.js'][153]++;
+  var args = ["-f"];
+  _$jscoverage['elastic-client.js'][156]++;
+  Object.keys(arg_props).forEach((function (key) {
+  _$jscoverage['elastic-client.js'][157]++;
+  args.push(["-Des.", key, "=", arg_props[key]].join(""));
 }));
-  _$jscoverage['elastic-client.js'][154]++;
-  report.process.stdout.on("error", (function (data) {
-  _$jscoverage['elastic-client.js'][155]++;
-  self.emit("process.error", data.toString());
+  _$jscoverage['elastic-client.js'][160]++;
+  args.splice(1, 2);
+  _$jscoverage['elastic-client.js'][163]++;
+  report.process = require("child_process").spawn(report.binary, args, {detached: false});
+  _$jscoverage['elastic-client.js'][168]++;
+  report.process.stdout.on("data", (function (data) {
+  _$jscoverage['elastic-client.js'][169]++;
+  self.emit("process.data", require("elastic-client").json.parse(data));
 }));
-  _$jscoverage['elastic-client.js'][159]++;
+  _$jscoverage['elastic-client.js'][173]++;
+  report.process.stderr.on("data", (function (data) {
+  _$jscoverage['elastic-client.js'][174]++;
+  self.emit("process.error", require("elastic-client").json.parse(data));
+}));
+  _$jscoverage['elastic-client.js'][178]++;
   self.set("pid", report.process.pid);
-  _$jscoverage['elastic-client.js'][162]++;
-  next(! self.get("pid")? new Error("Could now spawn process, no PID returned."): null, report.process || null);
+  _$jscoverage['elastic-client.js'][181]++;
+  next(! self.get("pid")? new Error("Could not spawn process, no PID returned."): null, report.process || null);
 })]}, this.startup.bind(this));
 }));
 }));
-_$jscoverage['elastic-client.js'].source = ["/**"," * ElasticClient"," *"," *"," *"," * @todo Replace eventemitter2 with object-channel once namespacing is ready."," *"," */","require( 'abstract' ).createModel( function ElasticClient( ElasticClient, prototype ) {","","  // Expose Model","  module.exports = ElasticClient;","","  // Use async, Object Channel (EventEmitter) and select Abstract utility methods","  ElasticClient.use( require( 'async' ) );","  ElasticClient.use( require( 'abstract' ).utility( 'defaults' ) );","","  // Local Modules","  var fs = require( 'fs' );","","  // Properties: Constructor","  ElasticClient.defineProperties( ElasticClient, {","    utility: require( './utility' ),","    debug: require( 'debug' )( 'elastic-client' ),","    stop: { get: function() { return ElasticClient.prototype.stop } }","  });","","  // Properties: Instance","  ElasticClient.defineProperties( prototype, {","    startup: function startup( error, report ) {","      var self = this;","","      ElasticClient.nextTick( function() {","        self.emit( 'node.started', error, report );","        if( error ) { self.emit( 'error', error ); }","      });","","      return this;","","    },","    search: function search() {","      this.client.search.apply( this, arguments );","      return this;","    },","    bulk: function bulk() {","      this.client.bulk.apply( this.client, arguments );","      return this;","    },","    stop: function stop( pid ) {","","      var pid = pid || ( this.get ? this.get( 'pid' ) : undefined );","","      // Emit Kill Event","      if( !pid ) {","        return this.emit ? this.emit( 'node.stopped', new Error( 'ElasticSearch process with pid [', pid ,'] not found.' ) ) : this;","      }","","      // Kill the process","      process.kill( pid );","","      // Return self","      return this;","","    }","  });","","  // Constructor","  ElasticClient.defineInstance( function Consruct( options ) {","    var self = this;","","    // Instance Resources","    self.use( require( 'eventemitter2' ).EventEmitter2.prototype );","    self.use( require( 'elastical' ) );","","    // Set Options with Defaults","    self.set( 'settings', ElasticClient.defaults( options, {","      path: {","        bin: undefined,","        data: undefined,","        work: undefined,","        logs: undefined,","      },","      cluster: {","        name: undefined","      },","      http: {","        port: 8000","      }","    }));","","    // Begin Startup","    self.auto({","      options: [ function options( next, report ) {","","        // No Paths","        if( 'object' !== typeof self.get( 'settings.path' ) ) {","          return next( null, self.get( 'settings' ) )","        }","","        for( var path in self.get( 'settings.path' ) ) {","","          // @todo There is a bug with resolving paths.","          var resolved_path;","          var set_path = self.get( 'settings.path' )[ path ];","","          // Resolve path","          try { resolved_path = fs.realpathSync( set_path ); } catch( error ) { ElasticClient.debug( error ); }","","          // Update path in settings","          self.set( 'settings.path.' + path, resolved_path || undefined );","","        }","","        next( null, self.get( 'settings' ) || {} );","","      }],","      binary: [ 'options', function binary( next, report ) {","","        // If path to ES is specified, resolve and return","        if( report.options.path.bin &amp;&amp; fs.existsSync( report.options.path.bin ) ) {","          return next( null, fs.realpathSync( report.options.path.bin ) )","        };","","        // Try to find global self","        require( 'which' )( 'elasticsearch', function which( error, found_path ) {","          next( error, found_path );","        });","","      }],","      process: [ 'binary', function process( next, report ) {","","        var args = [ '-f' ];","","        // Command Arguments.","        Object.keys( report.options ).forEach( function( key ) {","          args.push( [ '-Des.', key, '=', report.options[ key ] ].join( '' ) );","        });","","        // Spawn process and bind listeners","        report.process = require( 'child_process' ).spawn( report.binary, args, {","          detached: false","        });","","        // Input Data","        self.on( 'stdin.data', function( data ) {","          report.process.stdin.write( data );","        });","","        // Output Data and Error","        report.process.stdout.on( 'data', function( data ) {","          self.emit( 'process.data', data.toString() );","        });","","        report.process.stdout.on( 'error', function( data ) {","          self.emit( 'process.error', data.toString() );","        });","","        // Set PID","        self.set( 'pid', report.process.pid );","","        // Done","        next( !self.get( 'pid' ) ? new Error( 'Could now spawn process, no PID returned.' ) : null, report.process || null );","","      }]","    }, this.startup.bind( this ) );","","  });","","});"];
+_$jscoverage['elastic-client.js'].source = ["/**"," * ElasticClient"," *"," *"," *"," * @todo Replace eventemitter2 with object-channel once namespacing is ready."," *"," */","require( 'abstract' ).createModel( function ElasticClient( ElasticClient, prototype ) {","","  // Expose Model","  module.exports = ElasticClient;","","  // Use async, Object Channel (EventEmitter) and select Abstract utility methods","  ElasticClient.use( require( 'async' ) );","  ElasticClient.use( require( 'abstract' ).utility( 'flatten_obj', 'json', 'defaults' ) );","","  // Local Modules","  var fs = require( 'fs' );","","  // Properties: Constructor","  ElasticClient.defineProperties( ElasticClient, {","    utility: require( './utility' ),","    debug: require( 'debug' )( 'elastic-client' ),","    stop: { get: function() { return ElasticClient.prototype.stop } }","  });","","  // Properties: Instance","  ElasticClient.defineProperties( prototype, {","    startup: function startup( error, report ) {","      var self = this;","","      ElasticClient.nextTick( function() {","        self.emit( 'node.started', error, report );","        if( error ) { self.emit( 'error', error ); }","      });","","      return this;","    },","    search: function search() {","      this.client.search.apply( this, arguments );","      return this;","    },","    bulk: function bulk() {","      this.client.bulk.apply( this.client, arguments );","      return this;","    },","    stop: function stop( pid ) {","","      // @todo Should issue stop command via REST call.","","      var pid = pid || ( this.get ? this.get( 'pid' ) : undefined );","","      // Emit Kill Event","      if( !pid ) {","        return this.emit ? this.emit( 'node.stopped', new Error( 'ElasticSearch process with pid [', pid ,'] not found.' ) ) : this;","      }","","      // Kill the process","      process.kill( pid );","","      // Return self","      return this;","    }","  });","","  // Constructor","  ElasticClient.defineInstance( function create( binary, options ) {","    var self = this;","","    // Instance Resources","    self.use( require( 'eventemitter2' ).EventEmitter2.prototype );","    self.use( require( 'elastical' ) );","","    // Set Options with Defaults","    self.set( 'settings', ElasticClient.defaults( options, {","      path: {","        data: undefined,","        work: undefined,","        logs: undefined","      },","      cluster: {","        name: undefined","      },","      http: {","        port: 8000","      }","    }));","    self.set( 'binary', binary );","","    // Begin Startup","    self.auto({","      options: [ function options( next, report ) {","","        if( 'object' !== typeof self.get( 'settings.path' ) ) {","          return next( null, self.get( 'settings' ) )","        }","","        for( var path in self.get( 'settings.path' ) ) {","","          var resolved_path;","","          var set_path = self.get( 'settings.path' )[ path ];","","          // Resolve other paths","          try {","","            resolved_path = fs.realpathSync( set_path );","","          } catch( error ) {","","            // This doesn't seem to do anything.","            ElasticClient.debug( error );","","          }","","          // Update path in settings","          self.set( 'settings.path.' + path, resolved_path || undefined );","","        }","","        next( null, self.get( 'settings' ) || {} );","","      }],","      binary: [ 'options', function binary( next, report ) {","","        try {","","          // Resolve path","          self.set( 'binary', fs.realpathSync( self.get( 'binary' ) ) );","","          // We have fully resolved path.","          return next( null, self.get( 'binary' ) );","","        } catch( error ) {","","          // Try to automatically locate the ES","          require( 'which' )( 'elasticsearch', function which( error, found_path ) {","","            next( error, found_path );","","          });","","        }","","","","      }],","      process: [ 'binary', function process( next, report ) {","","        var arg_props = self.flatten_obj( report.options );","","        var args = [ '-f' ];","","        // Command Arguments.","        Object.keys( arg_props ).forEach( function( key ) {","          args.push( [ '-Des.', key, '=', arg_props[ key ] ].join( '' ) );","        });","","        args.splice( 1, 2 );","","        // Spawn process and bind listeners","        report.process = require( 'child_process' ).spawn( report.binary, args, {","          detached: false","        });","","        // Try to parse JSON, Output Data","        report.process.stdout.on( 'data', function( data ) {","          self.emit( 'process.data', require( 'elastic-client' ).json.parse( data ) );","        });","","        // Try to parse JSON, Output Error","        report.process.stderr.on( 'data', function( data ) {","          self.emit( 'process.error', require( 'elastic-client' ).json.parse( data ) );","        });","","        // Set PID","        self.set( 'pid', report.process.pid );","","        // Done","        next( !self.get( 'pid' ) ? new Error( 'Could not spawn process, no PID returned.' ) : null, report.process || null );","","      }]","    }, this.startup.bind( this ) );","","  });","","});"];

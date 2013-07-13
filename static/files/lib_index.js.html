@@ -141,7 +141,9 @@ Object.defineProperties( module.exports = Index, {
      * @for Index
      */
     get: function create() {
-      return function( options ) { return new Index( options ); }
+      return function( options ) {
+        return new Index( options );
+      }
      },
     enumerable: true
   }

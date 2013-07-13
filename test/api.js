@@ -59,9 +59,8 @@ module.exports = {
     'connects with elasticsearch': function() {
       var Client = require( '../' );
 
-      var Instance = Client.create({
+      var Instance = Client.create( '../../Vendor/elasticsearch/bin/elasticsearch', {
         path: {
-          bin: '../../Vendor/elasticsearch/bin/elasticsearch',
           data: 'test/.dynamic/data',
           work: 'test/.dynamic/work',
           logs: 'test/.dynamic/logs'
