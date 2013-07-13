@@ -60,13 +60,14 @@ module.exports = {
       var Client = require( '../' );
 
       var Instance = Client.create({
-        cluster: {
-          name: 'Example-Cluster'
-        },
         path: {
-          //bin: '/usr/local/Cellar/elasticsearch/bin/elasticsearch',
-          data: './data_storage',
-          logs: './logs_directory'
+          bin: '../../Vendor/elasticsearch/bin/elasticsearch',
+          data: 'test/.dynamic/data',
+          work: 'test/.dynamic/work',
+          logs: 'test/.dynamic/logs'
+        },
+        cluster: {
+          name: 'Motherfuckin-Cluster'
         },
         http: {
           port: 9210
