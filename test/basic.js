@@ -19,7 +19,7 @@ module.exports = {
     require( 'should' );
 
     // Test file
-    module.example = require( '../examples/basic' );
+    //module.example = require( '../examples/basic' );
 
   },
 

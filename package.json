@@ -53,6 +53,6 @@
   "devDependencies": {
     "mocha": "*",
     "should": "*",
-    "Faker": "*"
+    "faker": "*"
   }
 }

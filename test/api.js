@@ -66,7 +66,7 @@ module.exports = {
           logs: 'test/.dynamic/logs'
         },
         cluster: {
-          name: 'Motherfuckin-Cluster'
+          name: 'example-Cluster'
         },
         http: {
           port: 9210
