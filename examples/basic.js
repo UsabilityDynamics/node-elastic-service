@@ -10,10 +10,13 @@
 // Instantiate.
 require( 'colors' );
 
+var util = require( 'util' );
+var _ = require( 'lodash' );
+
 var Instance = require( 'elastic-client' ).create( '../../../Vendor/elasticsearch/bin/elasticsearch', {
   path: {
-    //data: '.dynamic/data',
-    //work: '.dynamic/work',
+    data: '.dynamic/data',
+    work: '.dynamic/work',
     logs: '.dynamic/logs'
   },
   cluster: {
@@ -24,19 +27,28 @@ var Instance = require( 'elastic-client' ).create( '../../../Vendor/elasticsearc
   }
 });
 
-// Cconsole all events.
+// Console all events.
 Instance.onAny( function( data ) {
 
-  console.log( this.event, data );
+if (!data) return;
+//  var d = _.pick({'data':'category', 'data':'message'})
+try {
+ JSON.parse(data);
+} catch (error) {
+ console.log('error', data.red );
+}
 
-/*  Not Needed
-  if( data && data.category ) {
-    console.log( data.category.magenta, data.message.cyan );
-  } else {
-    // could not parse message - troubleshoot
-    console.log( "Could Not Parse", data );
-  }
+/*
+
+  console.log( util.inspect( _(data).pick('category', 'message' ).value(), {
+    colors: true
+  } ));
 */
+
+
+
+
+
 });
 
 // Instance started.
@@ -45,16 +57,20 @@ Instance.once( 'node.started', function( error, report ) {
 
 
 
+//console.log( this.index );
 
+/*
+ setTimeout(function() {
+   Instance.index('test', 'user', require('faker').Helpers.userCard(), function( error, response ) {
+     if ( !error ) {
+       console.log( error );
+     } else {
+       console.log( response )
+     }
+   });
 
-
- /* Instance.index('test', 'user', require('faker').Helpers.userCard(), function( error, response ) {
-    if ( !error ) {
-      console.log( error );
-    } else {
-      console.log( response )
-    }
-  });*/
+ }, 7000 );
+*/
 
 
 });
