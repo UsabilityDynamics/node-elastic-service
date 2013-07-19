@@ -44,10 +44,6 @@
     "async": "0.2.9",
     "abstract": ">=0.0.3",
     "elastical": ">=0.0.10",
-    "object-channel": ">=0.0.3",
-    "object-state": ">=0.0.3",
-    "object-validation": ">=0.0.3",
-    "object-workflow": ">=0.0.3",
     "which": "1.0.5"
   },
   "devDependencies": {

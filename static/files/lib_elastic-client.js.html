@@ -159,7 +159,7 @@ require( &#x27;abstract&#x27; ).createModel( function ElasticClient( ElasticClie
   });
 
   // Constructor
-  ElasticClient.defineInstance( function create( binary, options ) {
+  ElasticClient.defineConstructor( function create( binary, options ) {
     var self = this;
 
     // Instance Resources
