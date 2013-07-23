@@ -111,6 +111,7 @@ require( &#x27;abstract&#x27; ).createModel( function ElasticClient( ElasticClie
 
   // Local Modules
   var fs = require( &#x27;fs&#x27; );
+  var elastical = require( &#x27;elastical&#x27; );
 
   // Properties: Constructor
   ElasticClient.defineProperties( ElasticClient, {
@@ -121,16 +122,42 @@ require( &#x27;abstract&#x27; ).createModel( function ElasticClient( ElasticClie
 
   // Properties: Instance
   ElasticClient.defineProperties( prototype, {
+
     startup: function startup( error, report ) {
       var self = this;
 
-      ElasticClient.nextTick( function() {
-        self.emit( &#x27;node.started&#x27;, error, report );
-        if( error ) { self.emit( &#x27;error&#x27;, error ); }
+      this._client = new elastical.Client( /*this.get(&#x27;settings.host&#x27;, &#x27;http://localhost&#x27;), {
+        port: this.get(&#x27;settings.http.port&#x27;)
+      } */);
+
+      this._client.stats( function( data ) {
+//  console.log( data );
+        self.stats = data;
       });
 
       return this;
     },
+
+
+    index: function index( index, type, doc, options, callback) {
+      console.log( &#x27;We gettin\&#x27;n request \&#x27;n shit &#x27;);
+
+     //console.log( this._client.index );
+
+      this._client.index( index, type, doc, callback );
+      return this;
+    },
+
+//    get: function get( index, id, options, callback) {
+//      this.client.get.apply( this, arguments) ;
+//      return this;
+//    },
+
+    delete: function get( index, type, id, options, callback ) {
+      this.client.delete.apply( this, arguments);
+      return this;
+    }
+/*
     search: function search() {
       this.client.search.apply( this, arguments );
       return this;
@@ -156,6 +183,7 @@ require( &#x27;abstract&#x27; ).createModel( function ElasticClient( ElasticClie
       // Return self
       return this;
     }
+ */
   });
 
   // Constructor
@@ -164,7 +192,12 @@ require( &#x27;abstract&#x27; ).createModel( function ElasticClient( ElasticClie
 
     // Instance Resources
     self.use( require( &#x27;eventemitter2&#x27; ).EventEmitter2.prototype );
-    self.use( require( &#x27;elastical&#x27; ) );
+
+    require( &#x27;eventemitter2&#x27; ).EventEmitter2.call( self, {
+      maxListeners: Infinity,
+      wildcard: true,
+      delimiter: &#x27;.&#x27;
+    });
 
     // Set Options with Defaults
     self.set( &#x27;settings&#x27;, ElasticClient.defaults( options, {
@@ -177,9 +210,10 @@ require( &#x27;abstract&#x27; ).createModel( function ElasticClient( ElasticClie
         name: undefined
       },
       http: {
-        port: 8000
+        port: 9200
       }
     }));
+
     self.set( &#x27;binary&#x27;, binary );
 
     // Begin Startup
@@ -236,9 +270,6 @@ require( &#x27;abstract&#x27; ).createModel( function ElasticClient( ElasticClie
           });
 
         }
-
-
-
       }],
       process: [ &#x27;binary&#x27;, function process( next, report ) {
 
@@ -251,8 +282,6 @@ require( &#x27;abstract&#x27; ).createModel( function ElasticClient( ElasticClie
           args.push( [ &#x27;-Des.&#x27;, key, &#x27;=&#x27;, arg_props[ key ] ].join( &#x27;&#x27; ) );
         });
 
-        args.splice( 1, 2 );
-
         // Spawn process and bind listeners
         report.process = require( &#x27;child_process&#x27; ).spawn( report.binary, args, {
           detached: false
@@ -260,7 +289,28 @@ require( &#x27;abstract&#x27; ).createModel( function ElasticClient( ElasticClie
 
         // Try to parse JSON, Output Data
         report.process.stdout.on( &#x27;data&#x27;, function( data ) {
-          self.emit( &#x27;process.data&#x27;, require( &#x27;elastic-client&#x27; ).json.parse( data ) );
+
+          var data = require( &#x27;elastic-client&#x27; ).json.parse( data );
+
+          if( &#x27;object&#x27; !== typeof data ) {
+
+            data = {
+              category: &#x27;_error_&#x27;,
+              data: data,
+              type: &#x27;_error_&#x27;
+            }
+
+          }
+
+          // Parse Log Stream
+          self.emit( data.category, {
+            category: data.category,
+            data: data.data,
+            type: data.type,
+            thread: data.thread,
+            date: data.date
+          });
+
         });
 
         // Try to parse JSON, Output Error

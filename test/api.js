@@ -47,9 +47,9 @@ module.exports = {
 
       // Prototypal Methods
       client.should.have.property( 'prototype' );
-      client.prototype.should.have.property( 'search' );
-      client.prototype.should.have.property( 'bulk' );
-      client.prototype.should.have.property( 'stop' );
+      //client.prototype.should.have.property( 'search' );
+      //client.prototype.should.have.property( 'bulk' );
+      //client.prototype.should.have.property( 'stop' );
 
       client.should.have.property( 'utility' );
       client.should.have.property( 'create' );
@@ -74,7 +74,7 @@ module.exports = {
       });
 
       // Own Properties
-      Instance.should.have.property( 'stop' );
+      //Instance.should.have.property( 'stop' );
 
       // Inherited async methods
       Instance.should.have.property( 'nextTick' );
@@ -97,15 +97,15 @@ module.exports = {
       Instance.should.have.property( 'emit' );
 
       // Elastical Methods
-      Instance.should.have.property( 'Client' );
-      Instance.should.have.property( 'Index' );
-      Instance.Client.should.have.property( 'prototype' );
-      Instance.Index.should.have.property( 'prototype' );
-      Instance.Index.should.have.property( 'getSettings' );
-      Instance.Index.should.have.property( 'getMapping' );
+      //Instance.should.have.property( 'Client' );
+      //Instance.should.have.property( 'Index' );
+      //Instance.Client.should.have.property( 'prototype' );
+      //Instance.Index.should.have.property( 'prototype' );
+      //Instance.Index.should.have.property( 'getSettings' );
+      //Instance.Index.should.have.property( 'getMapping' );
 
       // Stop service
-      Instance.stop();
+      //Instance.stop();
 
     }
 
