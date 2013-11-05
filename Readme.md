@@ -1,12 +1,4 @@
-ElasticSearch Client
-====================
-ElasticSearch Client for Node.js
-
-This is currently under development! This module currently lacks the following:
-
-    - tests
-    - documentation
-    - examples
+ElasticSearch Service for Node.js.
 
 If you are NOT looking for a module to actually LAUNCH ElasticSearch, but only for a module to
 interact with an ElasticSearch instance that is already started, you may want to look into using
@@ -22,16 +14,25 @@ One other fundamental difference between ESC and Elastical is I use Events like 
 
 To create a new ElasticSearch, instantiate the module using the start() method.
 
-    // Instantiate.
-    var Instance = require( 'elastic-client' ).create({
-      'path': '/usr/local/something/bin/elasticsearch',
-      'node.name': 'Example-Node',
-      'http.port': 9200,
-      'path.data': './data_storage',
-      'path.work': './work_directory',
-      'path.logs': './logs_directory',
-      'cluster.name': 'Example-Cluster'
-    });
+```javascript
+require( 'elastic-service' ).create( function configure () {
+
+  // Set Port
+  this.set( 'port', 9200 );
+
+  this.on( 'node.started', function started() {
+    console.log( 'Service Started pid:[%s]', this.pid );
+  });
+
+  this.on( 'node.stopped', function stopped() {
+    console.log( 'Service Stopped pid:[%s]', this.pid );
+  });
+
+  // Export
+  module.exports = this;
+
+});
+```
 
 The "path" property should be the absolute path to the ES binary. This module will attempt to find an
 ES instance using the "which" command if no path is specified.

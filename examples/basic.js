@@ -1,77 +1,26 @@
 /**
- * -
+ * Basic ElasticService Example
  *
- * -
- *
- * @author potanin
- * @date 7/12/13
+ * @author potanin@ud
  */
+require( 'elastic-service' ).create( function configure () {
 
-// Instantiate.
-require( 'colors' );
+  // Set Port
+  this.set( 'port', 9200 );
 
-var util = require( 'util' );
-var _ = require( 'lodash' );
+  this.on( 'started', function started() {
+    console.log( 'Service Started pid:[%s]', this.pid );
 
-var Instance = require( 'elastic-client' ).create( '../../../Vendor/elasticsearch/bin/elasticsearch', {
-  path: {
-    data: '.dynamic/data',
-    work: '.dynamic/work',
-    logs: '.dynamic/logs'
-  },
-  cluster: {
-    name: 'Chesty-Puller'
-  },
-  http: {
-    port: 9200
-  }
-});
+    // Console all events.
+    this.on( '**', function( data ) {});
 
-// Console all events.
-Instance.onAny( function( data ) {
+  });
 
-if (!data) return;
-//  var d = _.pick({'data':'category', 'data':'message'})
-try {
- JSON.parse(data);
-} catch (error) {
- console.log('error', data.red );
-}
+  this.on( 'stopped', function stopped() {
+    console.log( 'Service Stopped pid:[%s]', this.pid );
+  });
 
-/*
-
-  console.log( util.inspect( _(data).pick('category', 'message' ).value(), {
-    colors: true
-  } ));
-*/
-
-
-
-
+  // Export
+  module.exports = this;
 
 });
-
-// Instance started.
-Instance.once( 'node.started', function( error, report ) {
-  console.log( 'Node started with pid [%s]', this.get( 'pid' ) );
-
-
-
-//console.log( this.index );
-
-/*
- setTimeout(function() {
-   Instance.index('test', 'user', require('faker').Helpers.userCard(), function( error, response ) {
-     if ( !error ) {
-       console.log( error );
-     } else {
-       console.log( response )
-     }
-   });
-
- }, 7000 );
-*/
-
-
-});
-
