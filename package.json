@@ -1,8 +1,8 @@
 {
-  "name": "elastic-client",
+  "name": "elastic-service",
   "version": "0.1.0",
-  "description": "ElasticSearch client. The module can be used to start ElasticSearch instances, configure instance settings, and interact with the instance after it is initialized.",
-  "main": "./lib/elastic-client.js",
+  "description": "ElasticSearch Service. The module can be used to start ElasticSearch instances, configure instance settings, and interact with the instance after it is initialized.",
+  "main": "./lib/elastic-service.js",
   "keywords" : [
     "elasticsearch",
     "elastic",
@@ -22,9 +22,9 @@
     "npm >=1.0.0"
   ],
   "bin": {
-    "elastic-client-start": "./bin/elastic-client-start.js",
-    "elastic-client-stop": "./bin/elastic-client-stop.js",
-    "elastic-client-console": "./bin/elastic-client-console.js"
+    "elastic-service-start": "./bin/elastic-service-start.js",
+    "elastic-service-stop": "./bin/elastic-service-stop.js",
+    "elastic-service-console": "./bin/elastic-service-console.js"
   },
   "scripts": {
     "test": "make test",
@@ -37,7 +37,7 @@
     "url": "http://usabilitydynamics.com"
   },
   "repository": {
-    "url": "git@github.com:UsabilityDynamics/node-elastic-client.git",
+    "url": "git@github.com:UsabilityDynamics/node-elastic-service.git",
     "type": "git"
   },
   "contributors": [
@@ -54,7 +54,7 @@
   ],
   "dependencies": {
     "waterline": "*",
-    "waterline-elasticsearch": "*",
+    "waterline-elasticsearch": "git+ssh://git@github.com:UsabilityDynamics/node-waterline-elasticsearch#master",
     "commander": "2.0.0",
     "colors": "*",
     "async": "0.2.9",
@@ -64,6 +64,7 @@
     "which": "1.0.5"
   },
   "devDependencies": {
+    "should": "*",
     "grunt": "~0.4.1",
     "grunt-markdown": "~0.4.0",
     "grunt-contrib-symlink": "*",
@@ -74,8 +75,6 @@
     "grunt-contrib-concat": "*",
     "grunt-contrib-clean": "*",
     "grunt-jscoverage": "0.0.3",
-    "mocha": "*",
-    "should": "*",
-    "faker": "*"
+    "grunt-shell": "*"
   }
 }
