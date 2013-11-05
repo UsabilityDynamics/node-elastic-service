@@ -3,13 +3,10 @@
   "version": "0.1.0",
   "description": "ElasticSearch Service. The module can be used to start ElasticSearch instances, configure instance settings, and interact with the instance after it is initialized.",
   "main": "./lib/elastic-service.js",
-  "keywords" : [
-    "elasticsearch",
-    "elastic",
-    "search",
-    "client",
-    "lucene"
-  ],
+  "config": {
+    "port": 9200,
+    "hostname": "localhost"
+  },
   "copyright" : "Copyright (c) 2013 Usability Dynamics, Inc.",
   "directories": {
     "doc": "./static/codex",
@@ -53,28 +50,32 @@
     }
   ],
   "dependencies": {
-    "waterline": "*",
-    "waterline-elasticsearch": "git+ssh://git@github.com:UsabilityDynamics/node-waterline-elasticsearch#master",
     "commander": "2.0.0",
     "colors": "*",
     "async": "0.2.9",
-    "abstract": "*",
-    "elastical": "*",
+    "abstract": "git+ssh://git@github.com:UsabilityDynamics/node-abstract#master",
+    "auto": "git+ssh://git@github.com:UsabilityDynamics/node-autor#master",
+    "elastic-client": "git+ssh://git@github.com:UsabilityDynamics/node-elastic-client#master",
     "yaml-js": "*",
     "which": "1.0.5"
   },
   "devDependencies": {
-    "should": "*",
-    "grunt": "~0.4.1",
+    "grunt-contrib-symlink": "~0.2.0",
+    "grunt-contrib-yuidoc": "~0.5.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-less": "~0.8.1",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-jscoverage": "~0.0.3",
     "grunt-markdown": "~0.4.0",
-    "grunt-contrib-symlink": "*",
     "grunt-mocha-cli": "~1.3.0",
-    "grunt-contrib-yuidoc": "*",
-    "grunt-contrib-watch": "*",
-    "grunt-contrib-less": "*",
-    "grunt-contrib-concat": "*",
-    "grunt-contrib-clean": "*",
-    "grunt-jscoverage": "0.0.3",
-    "grunt-shell": "*"
-  }
+    "grunt-shell": "~0.5.0"
+  },
+  "keywords" : [
+    "elasticsearch",
+    "elastic",
+    "search",
+    "client",
+    "lucene"
+  ]
 }
