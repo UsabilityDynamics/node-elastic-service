@@ -54,7 +54,7 @@
     "colors": "*",
     "async": "0.2.9",
     "abstract": "git+ssh://git@github.com:UsabilityDynamics/node-abstract#master",
-    "auto": "git+ssh://git@github.com:UsabilityDynamics/node-autor#master",
+    "auto": "git+ssh://git@github.com:UsabilityDynamics/node-auto#master",
     "elastic-client": "git+ssh://git@github.com:UsabilityDynamics/node-elastic-client#master",
     "yaml-js": "*",
     "which": "1.0.5"
