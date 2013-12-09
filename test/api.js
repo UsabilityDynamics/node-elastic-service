@@ -19,7 +19,7 @@ module.exports = {
 
     // Very basic test
     'is available.': function() {
-      var client = require( '../' );
+      var client = require( '.' );
 
       // Constructor tests
       client.should.be.a( 'function' );
@@ -57,7 +57,7 @@ module.exports = {
    },
 
     'connects with elasticsearch': function() {
-      var Client = require( '../' );
+      var Client = require( '.' );
 
       var Instance = Client.create( '../../Vendor/elasticsearch/bin/elasticsearch', {
         path: {
